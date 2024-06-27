@@ -62,7 +62,8 @@ jobs:
           api-key: ${{ secrets.CLOUDSMITH_API_KEY }}
           command: "push"
           format: "maven"
-          owner: "desertrat-io/"
+          owner: "desertrat-io"
           repo: "keepsake"
-          republish: "true"
+          file: "keepsake-proto.jar"
+          republish: "false"
           
