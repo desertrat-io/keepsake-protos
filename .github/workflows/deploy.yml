@@ -77,5 +77,5 @@ jobs:
           repo: "keepsake"
           file: "keepsake-proto.jar"
           republish: "false"
-          pom_file: "pom.xml"
+          pom-file: "pom.xml"
           
