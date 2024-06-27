@@ -36,9 +36,10 @@ jobs:
       - name: Generate Java classes
         run: cd ./generated/java || exit && mvn clean package --file pom.xml
 
+      - name: a thing
+        run: pwd
       - name: Upload artifact
         uses: actions/upload-artifact@v3
-        run: pwd
         with:
           name: keepsake-protos
           path: target/*.jar
