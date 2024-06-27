@@ -60,7 +60,7 @@ jobs:
         run: |
           curl --request POST \
           --url https://api.cloudsmith.io/v1/packages/desertrat-io/keepsake/upload/maven/ \
-          --header 'X-Api-Key: $CLOUDSMITH_API_KEY' \
+          --header 'X-Api-Key: "'"$CLOUDSMITH_API_KEY"'" \
           --header 'accept: application/json' \
           --header 'content-type: application/json'
           --data '{"package_file": ./keepsake-proto.jar}'
