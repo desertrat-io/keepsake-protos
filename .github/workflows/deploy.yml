@@ -32,7 +32,7 @@ jobs:
           restore-keys: ${{ runner.os }}-maven
 
       - name: Generate Java classes
-        run: cd ./generated/java || exit && mvn clean package
+        run: cd ./generated/java || exit && mvn clean package --file pom.xml
 
       - name: Upload artifact
         uses: actions/upload-artifact@v3
