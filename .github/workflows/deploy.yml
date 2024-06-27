@@ -54,15 +54,19 @@ jobs:
           path: .
       - name: Rename jar
         run: mv keepsake-proto-* keepsake-proto.jar
+      - name: is the secret avail
+        env:
+          CLOUDSMITH_API_KEY: ${{ secrets.CLOUDSMITH_API_KEY }}
+        run: echo $CLOUDSMITH_API_KEY
       - name: Push jar to cloudsmith
         env:
           CLOUDSMITH_API_KEY: ${{ secrets.CLOUDSMITH_API_KEY }}
         run: |
           curl --request POST \
           --url https://api.cloudsmith.io/v1/packages/desertrat-io/keepsake/upload/maven/ \
-          --header "xg-api-key: ${CLOUDSMITH_API_KEY}" \
-          --header 'accept: application/json' \
-          --header 'content-type: application/json' \
+          -H "X-Api-Key: ${CLOUDSMITH_API_KEY}" \
+          -H 'accept: application/json' \
+          -H 'content-type: application/json' \
           --data '{"package_file": "./keepsake-proto.jar"}' \
           -v
           
