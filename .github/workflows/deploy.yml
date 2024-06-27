@@ -54,12 +54,6 @@ jobs:
           path: .
       - name: Rename jar
         run: mv keepsake-proto-* keepsake-proto.jar
-      - name: is the secret avail
-        env:
-          CLOUDSMITH_API_KEY: ${{ secrets.CLOUDSMITH_API_KEY }}
-        run: |
-          echo $CLOUDSMITH_API_KEY
-          echo ${{ secrets.CLOUDSMITH_API_KEY }}
       - name: Push jar to cloudsmith
         env:
           CLOUDSMITH_API_KEY: ${{ secrets.CLOUDSMITH_API_KEY }}
@@ -69,6 +63,5 @@ jobs:
           -H "X-Api-Key: ${CLOUDSMITH_API_KEY}" \
           -H 'accept: application/json' \
           -H 'content-type: application/json' \
-          --data '{"package_file": "./keepsake-proto.jar"}' \
-          -v
+          --data '{"package_file": "keepsake-proto.jar"}'
           
