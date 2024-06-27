@@ -1,0 +1,15 @@
+syntax = "proto3";
+package common;
+option java_package = "io.desertrat.keepsake.protocols.common";
+option php_namespace = "Keepsake\\Lib\\Protocols\\Common";
+option php_metadata_namespace = "Keepsake\\Lib\\Protocols\\Meta";
+import "google/protobuf/timestamp.proto";
+import "protocols/common/service_id.proto";
+
+message CommonResponseMeta {
+  string message = 1;
+  google.protobuf.Timestamp timestamp = 3;
+  common.ServiceId service_id = 4;
+  map<string, string> headers = 5;
+  string correlation_id = 6;
+}

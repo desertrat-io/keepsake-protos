@@ -1,0 +1,61 @@
+name: Build and deploy artifacts to cloudsmith
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout protobuf files
+        uses: actions/checkout@v4
+
+      - name: Make protoc available
+        uses: arduino/setup-protoc@v3
+
+      - name: Generate classes
+        run: protoc --proto_path=./ --java_out=./generated/java/src/main/java --php_out=./generated/php/build/src ./protocols/**/*.proto
+
+      - name: Set up JDK 21
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '21'
+
+      - name: Cache Maven packages
+        uses: actions/cache@v3
+        with:
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+          restore-keys: ${{ runner.os }}-maven
+
+      - name: Generate Java classes
+        run: cd ./generated/java || exit && mvn clean package
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: keepsake-protos
+          path: target/*.jar
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+
+    steps:
+      - name: Retrieve jar
+        uses: actions/download-artifact@v3
+        with:
+          name: keepsake-protos
+          path: .
+
+      - name: Push jar to cloudsmith
+        env:
+          CLOUDSMITH_API_KEY: ${{ secrets.CLOUDSMITH_API_KEY }}
+        run: |
+          curl -X POST \
+          -u mike-lawson:$CLOUDSMITH_API_KEY \
+          -F 'file=@target/keepsake-protos.jar' \
+          'https://api.cloudsmith.io/v1/repos/desertrat-io/keepsake/packages/'
