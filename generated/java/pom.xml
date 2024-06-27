@@ -28,16 +28,16 @@
             </plugin>
         </plugins>
     </build>
-    <distributionManagement>
-        <snapshotRepository>
-            <id>cloudsmith</id>
-            <url>https://maven.cloudsmith.io/desertrat-io/keepsake/</url>
-        </snapshotRepository>
-        <repository>
-            <id>cloudsmith</id>
-            <url>https://maven.cloudsmith.io/desertrat-io/keepsake/</url>
-        </repository>
-    </distributionManagement>
+<!--    <distributionManagement>-->
+<!--        <snapshotRepository>-->
+<!--            <id>cloudsmith</id>-->
+<!--            <url>https://maven.cloudsmith.io/desertrat-io/keepsake/</url>-->
+<!--        </snapshotRepository>-->
+<!--        <repository>-->
+<!--            <id>cloudsmith</id>-->
+<!--            <url>https://maven.cloudsmith.io/desertrat-io/keepsake/</url>-->
+<!--        </repository>-->
+<!--    </distributionManagement>-->
     <dependencies>
         <dependency>
             <groupId>com.google.protobuf</groupId>
