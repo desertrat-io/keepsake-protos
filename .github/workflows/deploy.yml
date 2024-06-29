@@ -55,7 +55,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: keepsake-php-proto
-          path: ./keepsake-php-proto.zip
+          path: ./generated/php/build/keepsake-php-proto.zip
   deploy-jar:
     runs-on: ubuntu-latest
     needs: build
