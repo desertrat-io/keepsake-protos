@@ -96,12 +96,6 @@ jobs:
         with:
           name: keepsake-php-proto
           path: .
-      - name: Verify PHP package
-        run: |
-          ls -h
-          unzip keepsake-php-proto.zip
-          cd keepsake-php-proto
-          ls -h
       - name: Upload and sync with cloudsmith
         uses: cloudsmith-io/action@master
         with:
