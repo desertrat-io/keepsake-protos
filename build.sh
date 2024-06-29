@@ -15,7 +15,7 @@ protoc --proto_path=$PROJECT_DIR --java_out=$JAVA_SOURCE \
 cd $JAVA_SOURCE/../../../ || exit && mvn clean package
 
 cd $PHP_SOURCE/../../ || exit && \
-php -d phar.readonly=off $PHP_SOURCE/../../vendor/bin/phar-composer build ./build/
-#cloudsmith push composer desertrat-io/keepsake keepsake-proto.phar
 
 cd $PROJECT_DIR || exit
+
+# todo: fix php generation, use zip files instead to avoid having to go through github actions shenanigans
