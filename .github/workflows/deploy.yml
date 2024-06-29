@@ -49,8 +49,8 @@ jobs:
 
       - name: Package PHP (don't need the php action because we're just zipping files)
         run: |
-          zip -r keepsake-php-proto.zip generated/php/build/src/ \
-          generated/php/build/composer.json generated/php/build/composer.lock
+          cd generated/php/build
+          zip -r keepsake-php-proto.zip src/ composer.json composer.lock
       - name: Now upload the php zip
         uses: actions/upload-artifact@v3
         with:
