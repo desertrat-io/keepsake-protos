@@ -1,4 +1,4 @@
-syntax = "proto3";
+syntax = "proto2";
 
 package pdf.converter;
 
@@ -13,36 +13,36 @@ enum ServiceId {
   KEEPSAKE_PDF_CONVERTER = 0;
 }
 message S3DataStore {
-  string region = 1;
-  string bucket_name = 2;
-  string tenant_name = 3;
+  required string region = 1;
+  required string bucket_name = 2;
+  required string tenant_name = 3;
 }
 message CommonResponseMeta {
-  string message = 1;
-  google.protobuf.Timestamp timestamp = 3;
-  ServiceId service_id = 4;
+  required string message = 1;
+  required google.protobuf.Timestamp timestamp = 3;
+  required ServiceId service_id = 4;
   map<string, string> headers = 5;
-  string correlation_id = 6;
+  required string correlation_id = 6;
 }
 
 // all fields required
 message ConvertPdfToJpegRequest {
-  string original_mime = 1;
-  string file_locator = 2;
+  required string original_mime = 1;
+  required string file_locator = 2;
   oneof data_store {
     S3DataStore s3_data_store = 3;
   }
-  string correlation_id = 4;
+  required string correlation_id = 4;
 
 }
 
 message ConvertPdfToJpegResponse {
-  CommonResponseMeta meta = 1;
+  required CommonResponseMeta meta = 1;
   message FilePointers {
-    string file_name = 1;
-    string file_mime = 2;
-    uint32 page_num = 3;
-    uint32 page_file_size = 4;
+    required string file_name = 1;
+    required string file_mime = 2;
+    required uint32 page_num = 3;
+    required uint32 page_file_size = 4;
   }
 }
 
