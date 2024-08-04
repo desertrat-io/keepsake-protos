@@ -13,36 +13,36 @@ enum ServiceId {
   KEEPSAKE_PDF_CONVERTER = 0;
 }
 message S3DataStore {
-  required string region = 1;
-  required string bucket_name = 2;
-  required string tenant_name = 3;
+  optional string region = 1;
+  optional string bucket_name = 2;
+  optional string tenant_name = 3;
 }
 message CommonResponseMeta {
-  required string message = 1;
-  required google.protobuf.Timestamp timestamp = 3;
-  required ServiceId service_id = 4;
+  optional string message = 1;
+  optional google.protobuf.Timestamp timestamp = 3;
+  optional ServiceId service_id = 4;
   map<string, string> headers = 5;
-  required string correlation_id = 6;
+  optional string correlation_id = 6;
 }
 
-// all fields required
+// all fields optional
 message ConvertPdfToJpegRequest {
-  required string original_mime = 1;
-  required string file_locator = 2;
+  optional string original_mime = 1;
+  optional string file_locator = 2;
   oneof data_store {
     S3DataStore s3_data_store = 3;
   }
-  required string correlation_id = 4;
+  optional string correlation_id = 4;
 
 }
 
 message ConvertPdfToJpegResponse {
-  required CommonResponseMeta meta = 1;
+  optional CommonResponseMeta meta = 1;
   message FilePointers {
-    required string file_name = 1;
-    required string file_mime = 2;
-    required uint32 page_num = 3;
-    required uint32 page_file_size = 4;
+    optional string file_name = 1;
+    optional string file_mime = 2;
+    optional uint32 page_num = 3;
+    optional uint32 page_file_size = 4;
   }
 }
 
