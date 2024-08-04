@@ -16,7 +16,8 @@ jobs:
       - name: Make protoc available
         uses: arduino/setup-protoc@v3
         with:
-          version: "27.2"
+          # quarkus embeds this dependency with an old version
+          version: "3.25.4"
 
       - name: Generate classes
         run: protoc --proto_path=./ --java_out=./generated/java/src/main/java --php_out=./generated/php/build/src ./protocols/**/*.proto

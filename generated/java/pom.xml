@@ -7,7 +7,7 @@
 
     <groupId>io.desertrat</groupId>
     <artifactId>keepsake-proto</artifactId>
-    <version>1.0.5</version>
+    <version>1.0.6</version>
 
     <properties>
         <java.version>21</java.version>
@@ -32,7 +32,7 @@
         <dependency>
             <groupId>com.google.protobuf</groupId>
             <artifactId>protobuf-java</artifactId>
-            <version>4.27.2</version>
+            <version>3.25.4</version>
         </dependency>
     </dependencies>
 </project>
