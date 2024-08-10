@@ -1,22 +1,22 @@
 {
-    "name": "deserat-io/keepsake",
-    "description": "Keepsake Protocols",
-    "type": "library",
-    "license": "MIT",
-    "version": "1.0.7",
-    "stability": "stable",
-    "require": {
-        "php": ">=7.4"
-    },
-    "authors": [
-        {
-            "name": "Mike",
-            "email": "mike@desertrat.io"
-        }
-    ],
-    "autoload": {
-        "psr-4": {
-            "Keepsake\\": "./src"
-        }
+  "name": "deserat-io/keepsake",
+  "description": "Keepsake Protocols",
+  "type": "library",
+  "license": "MIT",
+  "version": "1.0.8",
+  "stability": "stable",
+  "require": {
+    "php": ">=7.4"
+  },
+  "authors": [
+    {
+      "name": "Mike",
+      "email": "mike@desertrat.io"
     }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Keepsake\\": "./src"
+    }
+  }
 }

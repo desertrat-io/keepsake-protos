@@ -1,5 +1,4 @@
 syntax = "proto2";
-
 package pdf.converter;
 
 option java_multiple_files = true;
@@ -9,9 +8,6 @@ option php_metadata_namespace = "Keepsake\\Lib\\Protocols\\PdfConverter\\Meta";
 
 import "google/protobuf/timestamp.proto";
 
-enum ServiceId {
-  KEEPSAKE_PDF_CONVERTER = 0;
-}
 message S3DataStore {
   optional string region = 1;
   optional string bucket_name = 2;
@@ -20,7 +16,7 @@ message S3DataStore {
 message CommonResponseMeta {
   optional string message = 1;
   optional google.protobuf.Timestamp timestamp = 3;
-  optional ServiceId service_id = 4;
+  optional uint32 service_id = 4;
   map<string, string> headers = 5;
   optional string correlation_id = 6;
 }
