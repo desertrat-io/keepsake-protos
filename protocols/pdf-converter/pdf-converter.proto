@@ -1,4 +1,4 @@
-syntax = "proto2";
+syntax = "proto3";
 package pdf.converter;
 
 option java_multiple_files = true;
