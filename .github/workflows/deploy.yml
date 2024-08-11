@@ -1,8 +1,5 @@
 name: Build and deploy artifacts to cloudsmith
 on:
-  push:
-    branches:
-      - main
   pull_request:
 
 jobs:
