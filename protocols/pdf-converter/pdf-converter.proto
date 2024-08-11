@@ -1,5 +1,4 @@
 syntax = "proto3";
-
 package pdf.converter;
 
 option java_multiple_files = true;
@@ -7,29 +6,39 @@ option java_package = "io.desertrat.keepsake.protocols.pdfconverter";
 option php_namespace = "Keepsake\\Lib\\Protocols\\PdfConverter";
 option php_metadata_namespace = "Keepsake\\Lib\\Protocols\\PdfConverter\\Meta";
 
-import "protocols/common/service_response_meta.proto";
-import "protocols/common/data_stores.proto";
+import "google/protobuf/timestamp.proto";
 
+message S3DataStore {
+  optional string region = 1;
+  optional string bucket_name = 2;
+  optional string tenant_name = 3;
+}
+message CommonResponseMeta {
+  optional string message = 1;
+  optional google.protobuf.Timestamp timestamp = 3;
+  optional uint32 service_id = 4;
+  map<string, string> headers = 5;
+  optional string correlation_id = 6;
+}
 
-
-// all fields required
+// all fields optional
 message ConvertPdfToJpegRequest {
-  string original_mime = 1;
-  string file_locator = 2;
+  optional string original_mime = 1;
+  optional string file_locator = 2;
   oneof data_store {
-    common.S3DataStore s3_data_store = 3;
+    S3DataStore s3_data_store = 3;
   }
-  string correlation_id = 4;
+  optional string correlation_id = 4;
 
 }
 
 message ConvertPdfToJpegResponse {
-  common.CommonResponseMeta meta = 1;
+  optional CommonResponseMeta meta = 1;
   message FilePointers {
-    string file_name = 1;
-    string file_mime = 2;
-    uint32 page_num = 3;
-    uint32 page_file_size = 4;
+    optional string file_name = 1;
+    optional string file_mime = 2;
+    optional uint32 page_num = 3;
+    optional uint32 page_file_size = 4;
   }
 }
 

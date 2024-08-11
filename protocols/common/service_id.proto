@@ -1,8 +1,0 @@
-syntax = "proto3";
-package common;
-option java_package = "io.desertrat.keepsake.protocols.common";
-option php_namespace = "Keepsake\\Lib\\Protocols\\Common";
-option php_metadata_namespace = "Keepsake\\Lib\\Protocols\\Meta";
-enum ServiceId {
-  KEEPSAKE_PDF_CONVERTER = 0;
-}
