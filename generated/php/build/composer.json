@@ -3,7 +3,7 @@
   "description": "Keepsake Protocols",
   "type": "library",
   "license": "MIT",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "stability": "stable",
   "require": {
     "php": ">=7.4"
@@ -16,7 +16,8 @@
   ],
   "autoload": {
     "psr-4": {
-      "Keepsake\\": "src/"
+      "Keepsake\\": "src/Keepsake",
+      "GPBMetadata\\": "src/GPBMetadata"
     }
   }
 }
