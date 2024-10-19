@@ -8,6 +8,7 @@
     <groupId>io.desertrat</groupId>
     <artifactId>keepsake-proto</artifactId>
 
+
     <version>1.0.16</version>
 
     <properties>
