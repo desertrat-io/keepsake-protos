@@ -32,3 +32,5 @@ Temporary Items
 credentials.ini.bak
 # just a convenience script I wrote for local dev, this should not be used in the CI pipeline
 ./build.sh
+*.avpr
+avro

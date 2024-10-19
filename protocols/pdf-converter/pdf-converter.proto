@@ -30,3 +30,7 @@ message ConvertPdfToJpegResponse {
     uint32 page_file_size = 5;
   }
 }
+
+service KeepsakePdfConverter {
+  rpc ConvertToPdf(ConvertPdfToJpegRequest) returns (ConvertPdfToJpegResponse);
+}
