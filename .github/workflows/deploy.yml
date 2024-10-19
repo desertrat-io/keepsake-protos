@@ -18,7 +18,7 @@ jobs:
           version: "25.3"
 
       - name: Generate classes
-        run: protoc --proto_path=./ --java_out=./generated/java/src/main/java --php_out=./generated/php/build/src ./protocols/**/*.proto
+        run: protoc --proto_path=./ --java_out=./generated/java/src/main/java --php_out=./generated/php/build/src --plugin=protoc-gen-grpc=bins/opt/grpc_php_plugin ./protocols/**/*.proto
 
       - name: Set up JDK 21
         uses: actions/setup-java@v4
