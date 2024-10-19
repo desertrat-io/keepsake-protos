@@ -1,0 +1,5 @@
+{
+    "require": {
+        "jaumo/phavroc": "^2.8"
+    }
+}

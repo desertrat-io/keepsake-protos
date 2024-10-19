@@ -1,0 +1,36 @@
+version: '3'
+
+services:
+  php:
+    image: 'composer:2.6'
+    volumes:
+      - "./:/app"
+    command: "install"
+
+  php8.1:
+    image: 'php:8.1-cli'
+    volumes:
+      - "./:/app"
+
+  zookeeper:
+    image: 'confluentinc/cp-zookeeper:5.1.0'
+    environment:
+      ZOOKEEPER_CLIENT_PORT: '2181'
+      ZOOKEEPER_TICK_TIME: '2000'
+
+  kafka-broker:
+    image: 'confluentinc/cp-kafka:5.1.0'
+    environment:
+      KAFKA_ZOOKEEPER_CONNECT: 'zookeeper:2181'
+      KAFKA_ADVERTISED_LISTENERS: 'PLAINTEXT://kafka-broker:9092'
+
+  schema-registry:
+    image: 'confluentinc/cp-schema-registry:5.1.0'
+    ports:
+      - '8081:8081'
+    depends_on:
+      - zookeeper
+      - kafka-broker
+    environment:
+      SCHEMA_REGISTRY_HOST_NAME: localhost
+      SCHEMA_REGISTRY_KAFKASTORE_CONNECTION_URL: 'zookeeper:2181'

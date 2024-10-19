@@ -1,7 +1,15 @@
-
 /*
  * Comment for license information.
  */
-namespace CommonResponseMeta;
+@namespace("io.desertrat.keepsake.common")
+protocol CommonResponseMetaProtocol {
 
-schema $END$;
+	record CommonResponseMeta {
+
+		string message;
+		timestamp_ms timestamp;
+		int service_id;
+		map<string> headers = {};
+		string correlation_id;
+	}
+}
