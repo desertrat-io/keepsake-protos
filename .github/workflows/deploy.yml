@@ -18,7 +18,7 @@ jobs:
           version: "25.3"
 
       - name: Setup PHP with tools (just for the grpc plugin for protoc, I stg google)
-        uses: shivammathur/setup-php@v2
+        uses: shivammathur/setup-php@verbose
         with:
           php-version: '8.3'
           tools: grpc_php_plugin
