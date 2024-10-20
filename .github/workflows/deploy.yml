@@ -23,6 +23,9 @@ jobs:
           php-version: '8.3'
           tools: grpc_php_plugin
 
+      - name: Do a thing
+        run: echo "$(which grpc_php_plugin)"
+
       - name: Generate classes
         run: protoc --proto_path=./ --php_out=./generated/php/build/src --grpc_out=./generated/php/build/src --plugin=protoc-gen-grpc=$(which grpc_php_plugin) ./protocols/**/*.proto
 
