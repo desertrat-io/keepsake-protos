@@ -27,7 +27,8 @@ jobs:
         run: echo "$(which grpc_php_plugin)"
 
       - name: Generate classes
-        run: protoc --proto_path=./ --java_out=./generated/java/src/main/java --php_out=./generated/php/build/src --plugin=protoc-gen-grpc=/home/linuxbrew/.linuxbrew/bin/grpc_php_plugin ./protocols/**/*.proto
+        run: protoc --proto_path=./ --java_out=./generated/java/src/main/java --php_out=./generated/php/build/src ./protocols/**/*.proto
+
 
       - name: Set up JDK 21
         uses: actions/setup-java@v4
