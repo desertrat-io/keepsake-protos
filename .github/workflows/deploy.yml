@@ -15,16 +15,13 @@ jobs:
       - name: Make protoc available
         uses: arduino/setup-protoc@v3
         with:
-          version: "28.1"
+          version: "25.3"
 
       - name: Setup PHP with tools (just for the grpc plugin for protoc, I stg google)
-        uses: shivammathur/setup-php@v2
+        uses: shivammathur/setup-php@verbose
         with:
           php-version: '8.3'
-          tools: grpc_php_plugin:28.1
-
-      - name: Do a thing
-        run: echo "$(which grpc_php_plugin)"
+          tools: grpc_php_plugin
 
       - name: Generate classes
         run: protoc --proto_path=./ --php_out=./generated/php/build/src --grpc_out=./generated/php/build/src --plugin=protoc-gen-grpc=$(which grpc_php_plugin) ./protocols/**/*.proto
