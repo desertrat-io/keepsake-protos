@@ -1,0 +1,36 @@
+syntax = "proto3";
+package pdf.converter;
+
+option java_multiple_files = true;
+option java_package = "io.desertrat.keepsake.protocols.pdfconverter";
+option php_namespace = "Keepsake\\Lib\\Protocols\\PdfConverter";
+option php_metadata_namespace = "Keepsake\\Lib\\Protocols\\PdfConverter\\Meta";
+
+import "protocols/common/s3-data-store.proto";
+import "protocols/common/common-response-meta.proto";
+
+
+// all fields optional
+message ConvertPdfToJpegRequest {
+  string original_mime = 1;
+  string file_locator = 2;
+  oneof data_store {
+    keepsake.common.S3DataStore s3_data_store = 3;
+  }
+  string correlation_id = 4;
+
+}
+
+message ConvertPdfToJpegResponse {
+  keepsake.common.CommonResponseMeta meta = 1;
+  message FilePointers {
+    string file_name = 2;
+    string file_mime = 3;
+    uint32 page_num = 4;
+    uint32 page_file_size = 5;
+  }
+}
+
+service KeepsakePdfConverter {
+  rpc ConvertToPdf(ConvertPdfToJpegRequest) returns (ConvertPdfToJpegResponse);
+}
