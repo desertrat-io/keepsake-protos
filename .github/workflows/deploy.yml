@@ -27,7 +27,7 @@ jobs:
         run: echo "$(which grpc_php_plugin)"
 
       - name: Generate classes
-        run: PATH="$PATH:/home/linuxbrew/.linuxbrew/bin" protoc --proto_path=./ --java_out=./generated/java/src/main/java --php_out=./generated/php/build/src --php-grpc_out=./generated/php/build/src --plugin=protoc-gen-php-grpc=grpc_php_plugin ./protocols/**/*.proto
+        run: protoc --proto_path=./ --php_out=./generated/php/build/src --grpc_out=./generated/php/build/src --plugin=protoc-gen-grpc=$(which grpc_php_plugin) ./protocols/**/*.proto
 
       - name: Set up JDK 21
         uses: actions/setup-java@v4
@@ -43,7 +43,7 @@ jobs:
           restore-keys: ${{ runner.os }}-maven
 
       - name: Generate Java classes
-        run: cd ./generated/java || exit && mvn clean package --file pom.xml
+        run: cd ./generated/java || exit && mvn clean compile package --file pom.xml
 
       - name: Upload artifact
         uses: actions/upload-artifact@v3

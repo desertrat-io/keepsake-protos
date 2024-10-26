@@ -1,0 +1,7 @@
+syntax = "proto3";
+package keepsake.common;
+message S3DataStore {
+  optional string region = 1;
+  optional string bucket_name = 2;
+  optional string tenant_name = 3;
+}
