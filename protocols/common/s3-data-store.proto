@@ -4,4 +4,7 @@ message S3DataStore {
   optional string region = 1;
   optional string bucket_name = 2;
   optional string tenant_name = 3;
+  optional string file_name = 4;
+  optional string file_path = 5;
+  optional string file_key = 6;
 }
