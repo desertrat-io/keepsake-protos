@@ -1,5 +1,5 @@
 syntax = "proto3";
-package keepsake.common;
+package io.desertrat.keepsake.common;
 message S3DataStore {
   optional string region = 1;
   optional string bucket_name = 2;
