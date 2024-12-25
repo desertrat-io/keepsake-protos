@@ -14,10 +14,12 @@ import "protocols/common/common-response-meta.proto";
 message ConvertPdfToJpegRequest {
   string original_mime = 1;
   string file_locator = 2;
+  string file_path = 3;
+  string file_name = 4;
   oneof data_store {
-    keepsake.common.S3DataStore s3_data_store = 3;
+    keepsake.common.S3DataStore s3_data_store = 5;
   }
-  string correlation_id = 4;
+  string correlation_id = 6;
 
 }
 
