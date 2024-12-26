@@ -28,8 +28,9 @@ message ConvertPdfToJpegResponse {
   message FilePointers {
     string file_name = 2;
     string file_mime = 3;
-    uint32 page_num = 4;
-    uint32 page_file_size = 5;
+    string file_final_location = 4;
+    uint32 page_num = 5;
+    uint32 page_file_size = 6;
   }
 }
 
