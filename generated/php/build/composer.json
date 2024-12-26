@@ -3,7 +3,7 @@
   "description": "Keepsake Protocols",
   "type": "library",
   "license": "MIT",
-  "version": "1.0.25",
+  "version": "1.0.26",
   "stability": "stable",
   "require": {
     "php": ">=7.4"
