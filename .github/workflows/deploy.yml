@@ -26,6 +26,8 @@ jobs:
       - name: Generate classes
         run: |
           mkdir -p ./generated/java/src/main/java
+          mkdir -p ./generated/java/src/main/resources/protocols
+          cp -R ./protocols/* ./generated/java/src/main/resources/protocols
           protoc --proto_path=./ --php_out=./generated/php/build/src --java_out=./generated/java/src/main/java --grpc_out=./generated/php/build/src --plugin=protoc-gen-grpc=$(which grpc_php_plugin) ./protocols/**/*.proto
 
       - name: Set up JDK 21
