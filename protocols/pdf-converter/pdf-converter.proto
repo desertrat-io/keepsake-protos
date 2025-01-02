@@ -23,17 +23,17 @@ message ConvertPdfToJpegRequest {
 
 }
 
-message Page {
-  string file_name = 1;
-  string file_mime = 2;
-  string file_final_location = 3;
-  uint32 page_num = 4;
-  uint32 page_file_size = 5;
+message FilePointers {
+  string file_name = 2;
+  string file_mime = 3;
+  string file_final_location = 4;
+  uint32 page_num = 5;
+  uint32 page_file_size = 6;
 }
 
 message ConvertPdfToJpegResponse {
   io.desertrat.keepsake.common.CommonResponseMeta meta = 1;
-  repeated Page page = 2;
+  repeated FilePointers files = 2;
 }
 
 service KeepsakePdfConverter {
