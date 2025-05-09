@@ -10,4 +10,5 @@ message CommonResponseMeta {
   optional uint32 service_id = 4;
   map<string, string> headers = 5;
   optional string correlation_id = 6;
+  optional string user_uuid = 7;
 }
