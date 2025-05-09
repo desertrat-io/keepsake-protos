@@ -37,7 +37,7 @@ jobs:
           java-version: '21'
 
       - name: Cache Maven packages
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: ~/.m2/repository
           key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
@@ -47,12 +47,12 @@ jobs:
         run: cd ./generated/java || exit && mvn clean compile package --file pom.xml
 
       - name: Upload artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: keepsake-java-proto
           path: ./generated/java/target/*.jar
       - name: Upload pom
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: keepsake-proto-pom
           path: ./generated/java/pom.xml
@@ -62,7 +62,7 @@ jobs:
           cd generated/php/build
           zip -r keepsake-php-proto.zip src/ composer.json composer.lock
       - name: Now upload the php zip
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: keepsake-php-proto
           path: ./generated/php/build/keepsake-php-proto.zip
@@ -72,13 +72,13 @@ jobs:
 
     steps:
       - name: Retrieve jar
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: keepsake-java-proto
           path: .
 
       - name: Retrieve pom
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: keepsake-proto-pom
           path: .
@@ -102,7 +102,7 @@ jobs:
     needs: build
     steps:
       - name: Retrieve PHP archive
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: keepsake-php-proto
           path: .
