@@ -20,7 +20,7 @@ message ConvertPdfToJpegRequest {
     io.desertrat.keepsake.common.S3DataStore s3_data_store = 5;
   }
   string correlation_id = 6;
-
+  string user_uuid = 7;
 }
 
 message FilePointers {
