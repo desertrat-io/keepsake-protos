@@ -29,6 +29,8 @@ message FilePointers {
   string file_final_location = 4;
   uint32 page_num = 5;
   uint32 page_file_size = 6;
+  // as a UUID
+  string parent_image_id = 7;
 }
 
 message ConvertPdfToJpegResponse {
