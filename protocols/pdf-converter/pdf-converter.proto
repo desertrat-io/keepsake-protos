@@ -21,6 +21,7 @@ message ConvertPdfToJpegRequest {
   }
   string correlation_id = 6;
   string user_uuid = 7;
+  string image_uuid = 8;
 }
 
 message FilePointers {
@@ -30,7 +31,7 @@ message FilePointers {
   uint32 page_num = 5;
   uint32 page_file_size = 6;
   // as a UUID
-  string parent_image_id = 7;
+  string parent_image_uuid = 7;
 }
 
 message ConvertPdfToJpegResponse {
