@@ -1,0 +1,45 @@
+syntax = "proto3";
+package pdf.editor;
+
+option java_multiple_files = true;
+option java_package = "io.desertrat.keepsake.protocols.pdfeditor";
+option php_namespace = "Keepsake\\Lib\\Protocols\\PdfEditor";
+option php_metadata_namespace = "Keepsake\\Lib\\Protocols\\PdfEditor\\Meta";
+
+import "protocols/common/s3-data-store.proto";
+import "protocols/common/common-response-meta.proto";
+import "protocols/common/file-pointers.proto";
+
+message RedactionRectangle {
+  uint64 x_pos = 1;
+  uint64 y_pos = 2;
+  uint64 rectangle_length = 3;
+  uint64 rectangle_width = 4;
+  uint32 rectangle_fill_color = 5; // hex
+  float rectangle_alpha = 6;
+
+}
+
+message PdfRedactionRequest {
+  oneof data_store {
+    io.desertrat.keepsake.common.S3DataStore s3_data_store = 1;
+  }
+  string correlation_id = 2;
+  string user_uuid = 3;
+  string image_uuid = 4;
+  uint64 image_id = 5;
+  string storage_id = 6;
+  repeated RedactionRectangle rectangles = 7;
+  uint64 image_total_height = 8;
+  uint64 image_total_width = 9;
+}
+
+message PdfRedactionResponse {
+    io.desertrat.keepsake.common.CommonResponseMeta meta = 1;
+    repeated io.desertrat.keepsake.common.FilePointers files = 2;
+    string storage_id = 3;
+}
+
+service PdfEditor {
+  rpc RedactPdf(PdfRedactionRequest) returns (PdfRedactionResponse);
+}
