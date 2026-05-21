@@ -40,6 +40,6 @@ message PdfRedactionResponse {
     string storage_id = 3;
 }
 
-service PdfEditor {
+service KeepsakePdfEditor {
   rpc RedactPdf(PdfRedactionRequest) returns (PdfRedactionResponse);
 }
