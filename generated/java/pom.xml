@@ -7,7 +7,7 @@
 
     <groupId>io.desertrat</groupId>
     <artifactId>keepsake-proto</artifactId>
-    <version>1.0.36</version>
+    <version>1.0.37</version>
 
     <properties>
         <java.version>21</java.version>
