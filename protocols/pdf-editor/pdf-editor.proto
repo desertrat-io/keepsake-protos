@@ -11,11 +11,11 @@ import "protocols/common/common-response-meta.proto";
 import "protocols/common/file-pointers.proto";
 
 message RedactionRectangle {
-  uint64 x_pos = 1;
-  uint64 y_pos = 2;
-  uint64 rectangle_length = 3;
-  uint64 rectangle_width = 4;
-  uint64 page_num = 7;
+  uint32 x_pos = 1;
+  uint32 y_pos = 2;
+  uint32 rectangle_length = 3;
+  uint32 rectangle_width = 4;
+  uint32 page_num = 7;
   uint32 rectangle_fill_color = 5; // hex
   float rectangle_alpha = 6;
 
