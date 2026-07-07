@@ -41,7 +41,6 @@ jobs:
           --grpc-java_out=./generated/java/src/main/java \
           --plugin=protoc-gen-grpc=$(which grpc_php_plugin) \
           --plugin=protoc-gen-grpc-java=./protoc-gen-grpc-java \
-          
           ./protocols/**/*.proto
 
       - name: Set up JDK 21
