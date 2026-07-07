@@ -23,12 +23,26 @@ jobs:
           php-version: '8.3'
           tools: grpc_php_plugin
 
+      - name: Install Java gRPC protoc plugin
+        run: |
+          curl -L -o protoc-gen-grpc-java \
+            https://repo1.maven.org/maven2/io/grpc/protoc-gen-grpc-java/1.82.1/protoc-gen-grpc-java-1.82.1-linux-x86_64.exe
+          chmod +x protoc-gen-grpc-java
+
       - name: Generate classes
         run: |
           mkdir -p ./generated/java/src/main/java
           mkdir -p ./generated/java/src/main/resources/protocols
           cp -R ./protocols/* ./generated/java/src/main/resources/protocols
-          protoc --proto_path=./ --php_out=./generated/php/build/src --java_out=./generated/java/src/main/java --grpc_out=./generated/php/build/src --plugin=protoc-gen-grpc=$(which grpc_php_plugin) ./protocols/**/*.proto
+          protoc --proto_path=./ \
+          --php_out=./generated/php/build/src \
+          --java_out=./generated/java/src/main/java \
+          --grpc_out=./generated/php/build/src \
+          --grpc-java_out=./generated/java/src/main/java \
+          --plugin=protoc-gen-grpc=$(which grpc_php_plugin) \
+          --plugin=protoc-gen-grpc-java=./protoc-gen-grpc-java \
+          
+          ./protocols/**/*.proto
 
       - name: Set up JDK 21
         uses: actions/setup-java@v4
