@@ -16,7 +16,7 @@ message RedactionRectangle {
   uint32 rectangle_length = 3;
   uint32 rectangle_width = 4;
   uint32 page_num = 7;
-  uint32 rectangle_fill_color = 5; // hex
+  float rectangle_fill_color = 5; // hex
   float rectangle_alpha = 6;
 
 }
